@@ -95,7 +95,7 @@ jobs:
     - name: Upload Artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: application
+        name: application-${{ runner.os }}-${{ matrix.build_type }}-${{ matrix.ui }}
         path: build/bin
     - name: Running C++ Tests
       shell: bash
