@@ -93,10 +93,11 @@ jobs:
       run: |
         cd build && ninja
     - name: Upload Artifacts
+      if: ${{ matrix.os == 'windows-latest' && matrix.build_type == 'RelWithDebInfo' }}
       uses: actions/upload-artifact@v4
       with:
         name: application-${{ runner.os }}-${{ matrix.build_type }}-${{ matrix.ui }}
-        path: build/bin
+        path: build
     - name: Running C++ Tests
       shell: bash
       run: |
